@@ -21,11 +21,31 @@ This Python script monitors for failed login attempts on your Linux system using
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Editz7/Realtime-Failed-Login
-   cd Realtime-Failed-Login
+   git clone https://github.com/Editz7/linux-audit-failed-login-detector
+   cd linux-audit-failed-login-detector
 
 2. **Configure the script**
    Open `config.ini` and configure to your liking.
+
+## Execution
+
+1. **Standard Run**
+   Because the script must access protected system log files, it must be executed sudo:
+   ```bash
+   sudo python3 main.py
+2. **Running as a Background Process**
+   To keep the detector running after you close your terminal, use nohup:
+   ```bash
+   sudo nohup python3 main.py
+
+## Testing the Detector
+
+To verify that the system is working
+1. Open a new terminal window
+2. Attempt to SSH into your machine with a fake username or incorrect password
+   ```bash
+   ssh fakeuser@localhost
+3. Check your configured notification channel(Gotify, Email, or ntfy). You should receive an alert containing the timestamp, username and IP address of the failed attempt.
 
 ## Usage
 
